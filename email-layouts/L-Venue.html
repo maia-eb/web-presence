@@ -1,0 +1,33 @@
+Plain text list view: 2-col Full Width (date | headliner, suppport)
+```
+<!-- Begin L-Venue -->              
+		<tr><td width="10"></td>
+		<td width="580">
+					
+			<table cellpadding="10" cellspacing="0" border="0">
+			<tr><td height="20"></td><td></td><td></td></tr>
+			<tr>
+			<td colspan="3" align="center"><span style="font-size:35px;font-weight:bold;color:${theme.bodyLinkColor};font-family:Arial, Helvetica, sans-serif;line-height:45px;">MORE UPCOMING</span></td>
+			</tr>
+			<#list TemplateHelper.refine(upcomingEvents, '', '', 30, true, 'asc') as uEvent>
+			<tr>
+			<td width="60" valign="top" align="left">
+			<#assign startDate = uEvent.startDate/>
+			<#assign timezone = uEvent.venueTimezone/>
+			<span class="ipadnumbers" style="font-size:11px;font-weight:normal;color:${theme.eventInfoBoxLinkColor};text-transform: uppercase;font-family:Arial, Helvetica, sans-serif;line-height:18px;text-decoration:none;">${DateFormatter.formatDate(startDate, timezone, "EEE M/d")}</span></td>
+			<td width="500" align="left">
+			<a style="text-decoration:none;color:${theme.eventInfoBoxHeadlinerColor};font-family:Arial, Helvetica, sans-serif;font-size: 14px;" href="${uEvent.eventDetailUrl}"><span style="text-decoration:none;color:${theme.eventInfoBoxHeadlinerColor};font-family:Arial, Helvetica, sans-serif;font-size: 14px;">${uEvent.title}</span></a>
+			<#if uEvent.support?? && uEvent.support != "">
+			<a style="text-decoration:none;color:${theme.eventInfoBoxHoverColor};font-family:Arial, Helvetica, sans-serif;font-size: 12px;" href="${uEvent.eventDetailUrl}"><span style="text-decoration:none;color:${theme.eventInfoBoxHoverColor};font-family:Arial, Helvetica, sans-serif;font-size: 12px;">with ${uEvent.support}</span></a>
+			</#if>
+			</td>
+			</tr>
+			</#list>
+			<tr><td height="10" style="border-bottom-width: 1px;border-bottom-style: solid;border-bottom-color: ${theme.eventInfoBoxBorderColor};"></td><td style="border-bottom-width: 1px;border-bottom-style: solid;border-bottom-color: ${theme.eventInfoBoxBorderColor};"></td></tr>
+			<tr><td height="5"></td><td></td></tr>             		
+			</table>
+						
+		</td>
+		<td width="10"></td></tr>
+		<!-- End L-Venue -->
+```
